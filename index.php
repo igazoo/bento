@@ -191,25 +191,27 @@ $total_count = $data->totalItems;
 
         <div class="container mt-3">
           <div class="row">
-        <?php if($get_count > 0): ?>
-            <?php foreach($books as $book):
-                $title = $book->volumeInfo->title;
-                $thumbnail = $book->volumeInfo->imageLinks->thumbnail;
-                $authors = implode(',', $book->volumeInfo->authors);
-            ?>
-            <div class="col-md-4 card p-0">
-              <div class="card-body">
-                  <img src="<?php echo $thumbnail; ?>" alt="<?php echo $title; ?>" style="height:200px">
-                  <br/>
-                  <p class="text-black-50 pt-3" style="height:100px">
-                    <b>『<?php echo $title; ?>』</b>
+          <?php if($get_count > 0): ?>
+
+              <?php foreach($books as $book):
+                  $title = $book->volumeInfo->title;
+                  $thumbnail = $book->volumeInfo->imageLinks->thumbnail;
+                  $authors = implode(',', $book->volumeInfo->authors);
+              ?>
+
+              <div class="col-md-4 card p-0">
+                <div class="card-body">
+                    <img src="<?php echo $thumbnail; ?>" alt="<?php echo $title; ?>" style="height:200px">
                     <br/>
-                    著者：<?php echo $authors; ?>
-                  </p>
+                    <p class="text-black-50 pt-3" style="height:100px">
+                      <b>『<?php echo $title; ?>』</b>
+                      <br/>
+                      著者：<?php echo $authors; ?>
+                    </p>
+                </div>
               </div>
-            </div>
-            <?php endforeach; ?>
-            </div>
+              <?php endforeach; ?>
+
            <?php else: ?>
              <p>情報が有りません</p>
            <?php endif; ?>
@@ -217,6 +219,7 @@ $total_count = $data->totalItems;
           </div>
         </div>
         <!--END : お弁当関連書籍 -->
+
 
    </div>
 
