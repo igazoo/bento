@@ -209,6 +209,10 @@ $total_count = $data->totalItems;
               </div>
             </div>
             <?php endforeach; ?>
+            </div>
+           <?php else: ?>
+             <p>情報が有りません</p>
+           <?php endif; ?>
 
           </div>
         </div>
