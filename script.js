@@ -1,7 +1,6 @@
 'use strict';
 
 
-//表示切り替え
 
 //定数
 const name = document.getElementById('name');
@@ -10,6 +9,10 @@ const explanation = document.getElementById('explanation');
 const image = document.getElementById('image');
 const border = document.getElementById('border');
 const borderClass = "col-md-4 border mt-4";
+
+
+
+//表示切り替え
 
 //松
 document.getElementById('shou').onclick = function(){
@@ -168,7 +171,7 @@ document.getElementById('radioForm').onsubmit = function(event){
 
   let radio;
   radio = document.getElementById('radioForm').option.value;
-  document.getElementById('optionExplanation').textContent = `お届け先住所 : ${radio}`;
+  document.getElementById('optionExplanation').textContent = `ご飯の量 : ${radio}`;
 };
 
 //チェックボックスの入力値を取得して表示
@@ -189,14 +192,17 @@ document.getElementById('checkboxForm').onsubmit = function(event){
 document.getElementById('selectForm').onsubmit = function(event){
   event.preventDefault();
   const option = document.getElementById('selectForm').select.value;
-  document.getElementById('optionExplanation').textContent = `お届け先住所 : ${option}`;
+  document.getElementById('optionExplanation').textContent = `当店を知ったきっかけ : ${option}`;
 };
 
 //テキストボックスの入力値を取得して表示
+//Google Maps API を利用し入力した値に該当する地図を表示
 document.getElementById('textForm').onsubmit = function(event){
   event.preventDefault();
   const text = document.getElementById('textForm').text.value;
+  const map = `<br><iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyC8F2vD0OFURJR3LovVPmhNjTUkNOswwZE&q=${text}"  width="300" height="225" frameborder="0" style="border:0;" allowfullscreen=""></iframe>`;
   document.getElementById('optionExplanation').textContent = `お届け先住所 : ${text}`;
+  document.getElementById('optionExplanation').insertAdjacentHTML('beforeend', map);
 };
 
 //テキストエリアボックスの入力値を取得して表示

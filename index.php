@@ -1,3 +1,14 @@
+<?php
+$url = 'https://www.googleapis.com/books/v1/volumes?q=お弁当&maxResults=9';
+$json = file_get_contents($url);
+$data = json_decode($json);
+$books = $data->items;
+$get_count = count($books);
+$total_count = $data->totalItems;
+?>
+
+
+
 <!doctype html>
 <html>
 
@@ -168,31 +179,50 @@
 
         <div class="w-100 text-left mt-5 mb-5" style="height:300px;">
           <div id ="optionExplanation" class="h-100 p-2 border">
+            <!--<iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyC8F2vD0OFURJR3LovVPmhNjTUkNOswwZE&q=東京駅"  width="300" height="225" frameborder="0" style="border:0;" allowfullscreen=""></iframe>-->
           </div>
         </div>
-        <!-- オプション -->
+        <!--END: オプション -->
 
- <div id="sample"></div>
+        <!-- お弁当関連書籍 -->
+        <div class="text-black-50 text-left border-bottom d-flex mt-5">
+            <h5 class="mt-2">お弁当関連書籍</h5>
+        </div>
+
+        <div class="container mt-3">
+          <div class="row">
+        <?php if($get_count > 0): ?>
+            <?php foreach($books as $book):
+                $title = $book->volumeInfo->title;
+                $thumbnail = $book->volumeInfo->imageLinks->thumbnail;
+                $authors = implode(',', $book->volumeInfo->authors);
+            ?>
+            <div class="col-md-4 card p-0">
+              <div class="card-body">
+                  <img src="<?php echo $thumbnail; ?>" alt="<?php echo $title; ?>" style="height:200px">
+                  <br/>
+                  <p class="text-black-50 pt-3" style="height:100px">
+                    <b>『<?php echo $title; ?>』</b>
+                    <br/>
+                    著者：<?php echo $authors; ?>
+                  </p>
+              </div>
+            </div>
+            <?php endforeach; ?>
+
+          </div>
+        </div>
+        <!--END : お弁当関連書籍 -->
+
    </div>
+
    <script src="script.js"></script>
-
-
    <script src="//maps.googleapis.com/maps/api/js?key=AIzaSyC8F2vD0OFURJR3LovVPmhNjTUkNOswwZE"></script>
-   <script>
-   var map;
-  function initMap() {
-      map = new google.maps.Map(document.getElementById('sample'), { // #sampleに地図を埋め込む
-          center: { // 地図の中心を指定
-              lat: 34.7019399, // 緯度
-              lng: 135.51002519999997 // 経度
-          },
-          zoom: 19 // 地図のズームを指定
-      });
-  }
- 	</script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8F2vD0OFURJR3LovVPmhNjTUkNOswwZE&callback=initMap"></script>
+
   </body>
 
 
 
 </html>
+
+?>
