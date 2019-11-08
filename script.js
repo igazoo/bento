@@ -211,3 +211,93 @@ document.getElementById('textareaForm').onsubmit = function(event){
   const textarea = document.getElementById('textareaForm').textarea.value;
   document.getElementById('optionExplanation').textContent = `その他ご要望 : ${textarea}`;
 };
+
+
+
+// 現在地から東京駅までの経路
+var options = {
+  enableHighAccuracy: true,
+  timeout: 5000,
+  maximumAge: 0
+};
+
+let crd;
+function success(pos) {
+  crd = pos.coords;
+
+  console.log('Your current position is:');
+  console.log(`Latitude : ${crd.latitude}`);
+  console.log(`Longitude: ${crd.longitude}`);
+  console.log(`More or less ${crd.accuracy} meters.`);
+  return {Latitude: crd.latitude, Longitude: crd.longitude};
+}
+
+function error(err) {
+  console.warn(`ERROR(${err.code}): ${err.message}`);
+}
+
+navigator.geolocation.getCurrentPosition(success, error, options);
+
+
+document.getElementById('maptest').onclick = function(){
+
+  let startLatLng = [crd.latitude, crd.longitude]; // 現在地
+  let targetLatLng = [35.681382, 139.76608399999998]; // 東京駅
+  let goalMarkerImg = 'https://82mou.github.io/src/images/marker-on-dummy.png';
+  let map;
+
+  function initialize() {
+    let options = {
+      zoom: 16,
+      center: new google.maps.LatLng(startLatLng[0], startLatLng[1]),
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+    map = new google.maps.Map(document.getElementById('map_canvas'), options);
+    let rendererOptions = {
+      map: map, // 描画先の地図
+      draggable: true, // ドラッグ可
+      preserveViewport: true // centerの座標、ズームレベルで表示
+    };
+    let directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions);
+    let directionsService = new google.maps.DirectionsService();
+    directionsDisplay.setMap(map);
+    let request = {
+      origin: new google.maps.LatLng(startLatLng[0], startLatLng[1]), // スタート地点
+      destination: new google.maps.LatLng(targetLatLng[0], targetLatLng[1]), // ゴール地点
+      travelMode: google.maps.DirectionsTravelMode.TRANSIT, // 移動手段
+    };
+    directionsService.route(request, function(response,status) {
+      if (status === google.maps.DirectionsStatus.OK) {
+        new google.maps.DirectionsRenderer({
+          map: map,
+          directions: response,
+          suppressMarkers: true // デフォルトのマーカーを削除
+        });
+        let leg = response.routes[0].legs[0];
+        makeMarker(leg.end_location, markers.goalMarker, map);
+        setTimeout(function() {
+          map.setZoom(16); // ルート表示後にズーム率を変更
+        });
+      }
+    });
+  }
+
+  function makeMarker(position, icon, map) {
+    let marker = new google.maps.Marker({
+      position: position,
+      map: map,
+      icon: icon
+    });
+  }
+
+  let markers = {
+    goalMarker: new google.maps.MarkerImage(
+      goalMarkerImg, // 画像のパス
+      new google.maps.Size(24, 33), // マーカーのwidth,height
+      new google.maps.Point(0, 0), // 画像データの中で、どの部分を起点として表示させるか
+      new google.maps.Point(12, 33), // マーカーのpositionで与えられる緯度経度を画像のどの点にするか
+      new google.maps.Size(24, 33)) // 画像の大きさを拡大縮小
+  };
+
+  initialize();
+}

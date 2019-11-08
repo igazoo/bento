@@ -220,11 +220,21 @@ $total_count = $data->totalItems;
         </div>
         <!--END : お弁当関連書籍 -->
 
+        <!-- 現在地からお弁当屋さんまでの経路 -->
+        <div class="text-black-50 text-left border-bottom d-flex mt-5">
+            <h5 class="mt-2">現在地から東京駅までの経路</h5>
+            <button id="maptest" type="button" class="btn btn-outline-info ml-4 mb-1">表示</button>
+        </div>
+
+        <div class="w-100 text-left mt-5 mb-5" style="height:300px;">
+          <div id="map_canvas"  class="mb-5" style="width:600px; height:400px"></div>
+        </div>
+        <!--END : 現在地からお弁当屋さんまでの経路 -->
 
    </div>
 
+   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8F2vD0OFURJR3LovVPmhNjTUkNOswwZE&callback=initMap&sensor=false"></script>
    <script src="script.js"></script>
-   <script src="//maps.googleapis.com/maps/api/js?key=AIzaSyC8F2vD0OFURJR3LovVPmhNjTUkNOswwZE"></script>
 
   </body>
 
