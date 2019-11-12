@@ -1,0 +1,163 @@
+<!doctype html>
+<html>
+
+
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>お弁当屋さん</title>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+            integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+            crossorigin="anonymous">
+    </script>
+  </head>
+
+
+
+  <body class="text-black-50 text-center">
+    <div>
+
+
+      <!-- タイトル-->
+      <div class="mt-5">
+        <h1>お弁当屋さん</h1>
+      </div>
+      <!-- END : タイトル-->
+
+
+      <hr class="w-50 my-3">
+
+
+      <!-- カウントダウン -->
+      <div>
+        <p id="countdown"></p>
+      </div>
+      <!-- END : カウントダウン -->
+
+
+      <hr class="w-50 my-3">
+
+
+      <!-- 商品表示欄 -->
+      <div>
+        <img id="image" src="img/jou.png" style="height:300px;"></li>
+        <h5 id="name">お弁当 -上-</h5>
+        <p><span id="price">2000</span>円</p>
+      </div>
+
+      <div class="mt-3">
+        <button id="nami" type="button" class="btn btn-outline-info">並</button>
+        <button id="jou" type="button" class="btn btn-outline-info">上</button>
+      </div>
+
+      <div class="mt-3">
+        <button id="cart-confirm" type="button" class="btn btn-info ml-2">ショッピングカートに追加する</button>
+      </div>
+      <!-- END : 商品表示欄 -->
+
+
+      <hr class="w-50 my-3">
+
+
+      <!-- カート -->
+      <div>
+          <h3>お弁当カート</h3>
+          <p id="totalPrice">合計金額 : 0円</p>
+          <ul id="cart-list" class="list-group">
+          </ul>
+      </div>
+      <!-- END : カート -->
+
+
+      <hr class="w-50 my-3">
+
+
+      <!-- その他のメニュー -->
+      <div>
+          <h3>その他のメニュー</h3>
+          <button id="hide" type="button" class="btn btn-sm btn-secondary">非表示</button>
+          <ul id="cartlist" class="list-group mt-2">
+            <li>春弁当</li>
+            <li>夏弁当</li>
+            <li>秋弁当</li>
+            <li>冬弁当</li>
+          </ul>
+      </div>
+      <!-- END : その他のメニュー -->
+
+
+      <hr class="w-50 my-3">
+
+
+      <!-- オプション -->
+      <div>
+
+        <h3>オプション</h3>
+
+        <div class="mt-4">
+          <h5>ご飯の量</h5>
+          <form id="radioForm">
+            <input name="option" value="大" type="radio" class="mx-1"/>大
+            <input name="option" value="中" type="radio" class="mx-1"/>中
+            <input name="option" value="小" type="radio" class="mx-1"/>小
+            <button type="submit" class="btn btn-sm btn-outline-info">Submit</button>
+          </form>
+        </div>
+
+        <div class="mt-4">
+          <h5>付属品</h5>
+          <form id="checkboxForm">
+            <input name="accessory" value="箸" type="checkbox" class="mx-1"/>箸
+            <input name="accessory" value="手拭き" type="checkbox" class="mx-1"/>手拭き
+            <input name="accessory" value="爪楊枝" type="checkbox" class="mx-1"/>爪楊枝
+            <button type="submit" class="btn btn-sm btn-outline-info">Submit</button>
+          </form>
+        </div>
+
+        <div class="mt-4">
+          <h5>当店を知ったきっかけ</h5>
+          <form id="selectForm">
+            <select name="select">
+              <option value="知人の紹介">知人の紹介</option>
+              <option value="インターネット">インターネット</option>
+              <option value="その他">その他</option>
+            </select>
+            <button type="submit" class="btn btn-sm btn-outline-info">Submit</button>
+          </form>
+        </div>
+
+        <div class="mt-4">
+          <h5>お届け先住所</h5>
+          <form id="textForm">
+            <input name="text" class="border">
+            <button type="submit" class="btn btn-sm btn-outline-info">Submit</button>
+          </form>
+        </div>
+
+        <div class="mt-4">
+          <h5>その他ご要望</h5>
+          <form id="textareaForm">
+            <textarea name="textarea" rows="3" class="border"></textarea>
+            <button type="submit" class="btn btn-sm btn-outline-info">Submit</button>
+          </form>
+        </div>
+
+        <div class="mt-4">
+          <div id ="optionExplanation" class="border mx-auto mb-5" style="height:300px; width:300px">
+          </div>
+        </div>
+
+      </div>
+      <!-- END : オプション -->
+
+  <script src="script.js"></script>
+  </body>
+
+
+
+</html>

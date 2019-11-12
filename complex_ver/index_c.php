@@ -234,7 +234,7 @@ $total_count = $data->totalItems;
    </div>
 
    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8F2vD0OFURJR3LovVPmhNjTUkNOswwZE&callback=initMap&sensor=false"></script>
-   <script src="script.js"></script>
+   <script src="script_c.js"></script>
 
   </body>
 
