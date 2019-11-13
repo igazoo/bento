@@ -1,34 +1,20 @@
 'use strict';
 
+
 //閉店カウントダウン
-const goal = new Date();
-goal.setHours('23');
-goal.setMinutes('59');
-goal.setSeconds('59');
+setInterval(function () {
+   let now =  moment();
+   let goal = new Date();
+   goal.setHours('23');
+   goal.setMinutes('59');
+   goal.setSeconds('59');
+   goal = moment(goal);
 
-function countdown(){
-  const now = new Date();
-
-  const rest = goal.getTime()-now.getTime();
-  const hour = Math.floor(rest/1000/60/60)%24;
-  const min = Math.floor(rest/1000/60)%60;
-  const sec = Math.floor(rest/1000)%60;
-  const count = [hour, min, sec];
-
-  return count;
-}
-
-function recalc(){
-  const counter = countdown(goal);
-  document.getElementById('countdown').textContent = `本日閉店まで ${counter[0]} 時間 ${counter[1]} 分 ${counter[2]} 秒`;
-  refresh();
-}
-
-function refresh(){
-  setTimeout(recalc, 1000);
-}
-
-recalc();
+   let diff = goal.diff(now);
+   let duration = moment.duration( diff );
+   document.getElementById('countdown').textContent = `本日閉店まで ${duration.hours()} 時間 ${duration.minutes()} 分 ${duration.seconds()} 秒`;
+   console.log(goal);
+}, 1000);
 
 
 

@@ -232,7 +232,8 @@ $total_count = $data->totalItems;
         <!--END : 現在地からお弁当屋さんまでの経路 -->
 
    </div>
-
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.23.0/moment.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.23.0/locale/ja.js"></script>
    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8F2vD0OFURJR3LovVPmhNjTUkNOswwZE&callback=initMap&sensor=false"></script>
    <script src="script_c.js"></script>
 
