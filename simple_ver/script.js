@@ -1,29 +1,14 @@
 'use strict';
 
 
-//閉店カウントダウン
-setInterval(function () {
-   let now =  moment();
-   let goal = new Date();
-   goal.setHours('23');
-   goal.setMinutes('59');
-   goal.setSeconds('59');
-   goal = moment(goal);
 
-   let diff = goal.diff(now);
-   let duration = moment.duration( diff );
-   document.getElementById('countdown').textContent = `本日閉店まで ${duration.hours()} 時間 ${duration.minutes()} 分 ${duration.seconds()} 秒`;
-   console.log(goal);
-}, 1000);
-
-
+//表示切り替え
 
 //定数
 const name = document.getElementById('name');
 const price = document.getElementById('price');
 const image = document.getElementById('image');
 
-//表示切り替え
 //並
 document.getElementById('nami').onclick = function(){
   name.textContent = "お弁当 -並-";
@@ -59,7 +44,7 @@ document.getElementById('jou').addEventListener('mouseleave', ()=>{
 
 //ダイアログ
 //アラートダイアログ
-const hour = new Date().getHours();
+let hour = new Date().getHours();
 if (hour < 16){
   window.alert('朝と昼は並弁当が売れてます！');
 } else {
@@ -154,3 +139,19 @@ document.getElementById('textareaForm').onsubmit = function(event){
   const textarea = document.getElementById('textareaForm').textarea.value;
   document.getElementById('optionExplanation').textContent = `その他ご要望 : ${textarea}`;
 };
+
+
+//閉店カウントダウン
+setInterval(function () {
+   let now =  moment();
+   let goal = new Date();
+   goal.setHours('23');
+   goal.setMinutes('59');
+   goal.setSeconds('59');
+   goal = moment(goal);
+
+   let diff = goal.diff(now);
+   let duration = moment.duration( diff );
+   document.getElementById('countdown').textContent = `本日閉店まで ${duration.hours()} 時間 ${duration.minutes()} 分 ${duration.seconds()} 秒`;
+   console.log(goal);
+}, 1000);
