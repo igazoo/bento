@@ -4,69 +4,69 @@
 
 //表示切り替え
 
-const name = document.getElementById('name');
-const price = document.getElementById('price');
-const image = document.getElementById('image');
+const NAME = document.getElementById('name');
+const PRICE = document.getElementById('price');
+const IMAGE = document.getElementById('image');
 
 //並
-const nami = document.getElementById('nami');
+const NAMI = document.getElementById('nami');
 
-nami.onclick = ()=>{
-  name.textContent = "お弁当 -並-";
-  price.textContent = "1000";
-  image.src = "img/nami.png";
+NAMI.onclick = ()=>{
+  NAME.textContent = "お弁当 -並-";
+  PRICE.textContent = "1000";
+  IMAGE.src = "img/nami.png";
 }
 
-nami.addEventListener('mouseenter', ()=>{
-  nami.classList.add('btn-lg');
+NAMI.addEventListener('mouseenter', ()=>{
+  NAMI.classList.add('btn-lg');
 },false);
 
-nami.addEventListener('mouseleave', ()=>{
-  nami.classList.remove('btn-lg');
+NAMI.addEventListener('mouseleave', ()=>{
+  NAMI.classList.remove('btn-lg');
 },false);
 
 
 //上
-const jou = document.getElementById('jou');
-jou.onclick = ()=>{
-  name.textContent = "お弁当 -上-";
-  price.textContent = "2000";
-  image.src = "img/jou.png";
+const JOU = document.getElementById('jou');
+JOU.onclick = ()=>{
+  NAME.textContent = "お弁当 -上-";
+  PRICE.textContent = "2000";
+  IMAGE.src = "img/jou.png";
 }
 
-jou.addEventListener('mouseenter', ()=>{
-  jou.classList.add('btn-lg');
+JOU.addEventListener('mouseenter', ()=>{
+  JOU.classList.add('btn-lg');
 },false);
 
-jou.addEventListener('mouseleave', ()=>{
-  jou.classList.remove('btn-lg');
+JOU.addEventListener('mouseleave', ()=>{
+  JOU.classList.remove('btn-lg');
 },false);
 
 
 
 //ダイアログ
 //アラートダイアログ
-const hour = new Date().getHours();
-//console.log(hour);
-if (hour < 16){
+const HOUR = new Date().getHours();
+console.log(HOUR);
+if (HOUR < 16){
   window.alert('朝と昼は並弁当が売れてます！');
 } else {
   window.alert('夜は上弁当が売れてます！');
 }
 
 //カート確認ダイアログ
-const sumPrice = [];
+const SUM_PRICE = [];
 document.getElementById('cart-confirm').onclick = ()=>{
-  const cart = window.confirm(`${name.textContent} をカートに入れますか？` );
-  const li = `<li>${name.textContent}</li>`;
+  const CART = window.confirm(`${NAME.textContent} をカートに入れますか？` );
+  const LI = `<li>${NAME.textContent}</li>`;
 
-  if (cart){
-    document.getElementById('cart-list').insertAdjacentHTML('beforeend', li);
+  if (CART){
+    document.getElementById('cart-list').insertAdjacentHTML('beforeend', LI);
 
     // 合計金額の表示
     let totalPrice;
-    sumPrice.push(parseInt(price.textContent));
-    totalPrice = sumPrice.reduce((total,x) => total+=x,0);
+    SUM_PRICE.push(parseInt(PRICE.textContent));
+    totalPrice = SUM_PRICE.reduce((total,x) => total+=x,0);
     document.getElementById('totalPrice').textContent = `合計金額 : ${totalPrice}円`;
 
   } else {
@@ -75,27 +75,27 @@ document.getElementById('cart-confirm').onclick = ()=>{
 }
 
 //json ファイルからの在庫状況の取得 (Webサーバー経由で動作)
-const stockArray = [];
+const STOCK_ARRAY = [];
 $(document).ready(()=>{
   $.ajax({url:'stock.json', dataType:'json'})
-  .done((data)=>{
+  .done(data=>{
     data.forEach((item, index)=>{
-      stockArray.push(item.num);
+      STOCK_ARRAY.push(item.num);
     })
   })
 })
 
-console.log(stockArray);
+console.log(STOCK_ARRAY);
 
 //在庫確認文字列ダイアログ (Webサーバー経由で動作)
 document.getElementById('stock-confirm').onclick = ()=>{
-  const stockConfirm = window.prompt(`${name.textContent} の在庫を確認しますか？ yes または no でお答えください。` );
-  if (stockConfirm === 'yes'){
+  const STOCK_CONFIRM = window.prompt(`${name.textContent} の在庫を確認しますか？ yes または no でお答えください。` );
+  if (STOCK_CONFIRM === 'yes'){
     console.log(name.textContent);
     switch(name.textContent) {
-      case 'お弁当 -並-' : window.alert(`在庫は ${stockArray[0]} 個です。`);
+      case 'お弁当 -並-' : window.alert(`在庫は ${STOCK_ARRAY[0]} 個です。`);
       break;
-      case 'お弁当 -上-' : window.alert(`在庫は ${stockArray[1]} 個です。`);
+      case 'お弁当 -上-' : window.alert(`在庫は ${STOCK_ARRAY[1]} 個です。`);
       break;
     }
   } else {
@@ -126,70 +126,70 @@ $(document).ready(()=>{
 
 //フォーム入力値の取得
 
-const optionExplanation = document.getElementById('optionExplanation');
+const OPTION_EXPLANATION = document.getElementById('optionExplanation');
 
 //ラジオボタンの入力値を取得して表示
 
-const radioForm = document.getElementById('radioForm');
-radioForm.onsubmit = (event)=>{
+const RADIO_FORM = document.getElementById('radioForm');
+RADIO_FORM.onsubmit = event =>{
   event.preventDefault();
 
   let radio;
-  radio = radioForm.option.value;
-  optionExplanation.textContent = `ご飯の量 : ${radio}`;
+  radio = RADIO_FORM.option.value;
+  OPTION_EXPLANATION.textContent = `ご飯の量 : ${radio}`;
 };
 
 //チェックボックスの入力値を取得して表示
-document.getElementById('checkboxForm').onsubmit = (event)=>{
+document.getElementById('checkboxForm').onsubmit = event =>{
   event.preventDefault();
 
-  const elements = document.getElementsByName('accessory');
-  const checkbox = "付属品 :";
-  const i=0;
+  const ELEMENTS = document.getElementsByName('accessory');
+  let checkbox = "付属品 :";
+  let i=0;
   while(i < 3){
-    if(elements[i].checked) checkbox = checkbox + ' ' + elements[i].value;
+    if(ELEMENTS[i].checked) checkbox = checkbox + ' ' + ELEMENTS[i].value;
     i += 1;
   };
-  optionExplanation.textContent = checkbox;
+  OPTION_EXPLANATION.textContent = checkbox;
 };
 
 //セレクトドロップダウンの入力値を取得して表示
-const selectForm = document.getElementById('selectForm');
-selectForm.onsubmit = (event)=>{
+const SELECT_FORM = document.getElementById('selectForm');
+SELECT_FORM.onsubmit = event =>{
   event.preventDefault();
-  const option = selectForm.select.value;
-  optionExplanation.textContent = `当店を知ったきっかけ : ${option}`;
+  const OPTION = SELECT_FORM.select.value;
+  OPTION_EXPLANATION.textContent = `当店を知ったきっかけ : ${OPTION}`;
 };
 
 //テキストボックスの入力値を取得して表示
 //Google Maps API を利用し入力した値に該当する地図を表示
-document.getElementById('textForm').onsubmit = (event)=>{
+document.getElementById('textForm').onsubmit = event =>{
   event.preventDefault();
-  const text = document.getElementById('textForm').text.value;
-  const map = `<br><iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyC8F2vD0OFURJR3LovVPmhNjTUkNOswwZE&q=${text}"  width="300" height="225" frameborder="0" style="border:0;" allowfullscreen=""></iframe>`;
-  optionExplanation.textContent = `お届け先住所 : ${text}`;
-  optionExplanation.insertAdjacentHTML('beforeend', map);
+  const TEXT = document.getElementById('textForm').text.value;
+  const MAP = `<br><iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyC8F2vD0OFURJR3LovVPmhNjTUkNOswwZE&q=${TEXT}"  width="300" height="225" frameborder="0" style="border:0;" allowfullscreen=""></iframe>`;
+  OPTION_EXPLANATION.textContent = `お届け先住所 : ${TEXT}`;
+  OPTION_EXPLANATION.insertAdjacentHTML('beforeend', MAP);
 };
 
 //テキストエリアボックスの入力値を取得して表示
-document.getElementById('textareaForm').onsubmit = (event)=>{
+document.getElementById('textareaForm').onsubmit = event =>{
   event.preventDefault();
-  const textarea = document.getElementById('textareaForm').textarea.value;
-  optionExplanation.textContent = `その他ご要望 : ${textarea}`;
+  const TEXTAREA = document.getElementById('textareaForm').textarea.value;
+  OPTION_EXPLANATION.textContent = `その他ご要望 : ${TEXTAREA}`;
 };
 
 
 
 //閉店カウントダウン
 setInterval(()=> {
-   const now =  moment();
-   const goal = new Date();
+   const NOW =  moment();
+   let goal = new Date();
    goal.setHours('23');
    goal.setMinutes('59');
    goal.setSeconds('59');
    goal = moment(goal);
 
-   const diff = goal.diff(now);
-   const duration = moment.duration( diff );
-   document.getElementById('countdown').textContent = `本日閉店まで ${duration.hours()} 時間 ${duration.minutes()} 分 ${duration.seconds()} 秒`;
+   const DIFF = goal.diff(NOW);
+   const DURATION = moment.duration(DIFF);
+   document.getElementById('countdown').textContent = `本日閉店まで ${DURATION.hours()} 時間 ${DURATION.minutes()} 分 ${DURATION.seconds()} 秒`;
 }, 1000);
