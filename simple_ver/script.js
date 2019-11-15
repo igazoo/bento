@@ -89,10 +89,10 @@ console.log(STOCK_ARRAY);
 
 //在庫確認文字列ダイアログ (Webサーバー経由で動作)
 document.getElementById('stock-confirm').onclick = ()=>{
-  const STOCK_CONFIRM = window.prompt(`${name.textContent} の在庫を確認しますか？ yes または no でお答えください。` );
+  const STOCK_CONFIRM = window.prompt(`${NAME.textContent} の在庫を確認しますか？ yes または no でお答えください。` );
   if (STOCK_CONFIRM === 'yes'){
-    console.log(name.textContent);
-    switch(name.textContent) {
+    console.log(NAME.textContent);
+    switch(NAME.textContent) {
       case 'お弁当 -並-' : window.alert(`在庫は ${STOCK_ARRAY[0]} 個です。`);
       break;
       case 'お弁当 -上-' : window.alert(`在庫は ${STOCK_ARRAY[1]} 個です。`);
