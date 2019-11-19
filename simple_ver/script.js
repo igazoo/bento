@@ -6,6 +6,7 @@
 
 const NAME = document.getElementById('name');
 const PRICE = document.getElementById('price');
+const IMAGE = document.getElementById('image');
 
 //並
 const NAMI = document.getElementById('nami');
@@ -13,7 +14,7 @@ const NAMI = document.getElementById('nami');
 NAMI.onclick = ()=>{
   NAME.textContent = "お弁当 -並-";
   PRICE.textContent = "1000";
-  image.setAttribute('src', 'img/nami.png');
+  IMAGE.setAttribute('src', 'img/nami.png');
 }
 
 NAMI.addEventListener('mouseenter', ()=>{
@@ -31,7 +32,7 @@ const JOU = document.getElementById('jou');
 JOU.onclick = ()=>{
   NAME.textContent = "お弁当 -上-";
   PRICE.textContent = "2000";
-  image.setAttribute('src', 'img/jou.png');
+  IMAGE.setAttribute('src', 'img/jou.png');
 }
 
 JOU.addEventListener('mouseenter', ()=>{
