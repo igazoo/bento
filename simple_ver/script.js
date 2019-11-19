@@ -6,7 +6,6 @@
 
 const NAME = document.getElementById('name');
 const PRICE = document.getElementById('price');
-const IMAGE = document.getElementById('image');
 
 //並
 const NAMI = document.getElementById('nami');
@@ -14,7 +13,7 @@ const NAMI = document.getElementById('nami');
 NAMI.onclick = ()=>{
   NAME.textContent = "お弁当 -並-";
   PRICE.textContent = "1000";
-  IMAGE.src = "img/nami.png";
+  image.setAttribute('src', 'img/nami.png');
 }
 
 NAMI.addEventListener('mouseenter', ()=>{
@@ -32,7 +31,7 @@ const JOU = document.getElementById('jou');
 JOU.onclick = ()=>{
   NAME.textContent = "お弁当 -上-";
   PRICE.textContent = "2000";
-  IMAGE.src = "img/jou.png";
+  image.setAttribute('src', 'img/jou.png');
 }
 
 JOU.addEventListener('mouseenter', ()=>{
@@ -49,7 +48,7 @@ JOU.addEventListener('mouseleave', ()=>{
 //アラートダイアログ
 const HOUR = new Date().getHours();
 
-console.log(HOUR);
+//console.log(HOUR);
 if (HOUR < 16){
   window.alert('朝と昼は並弁当が売れてます！');
 } else {
@@ -81,7 +80,7 @@ CART_CONFIRM.onclick = ()=>{
   }
 }
 
-
+/*
 //json ファイルからの在庫状況の取得 (Webサーバー経由で動作)
 const STOCK_ARRAY = [];
 
@@ -114,6 +113,7 @@ STOCK_CONFIRM.onclick = ()=>{
     window.alert(`在庫の確認をキャンセルしました`)
   }
 }
+*/
 
 
 
@@ -218,6 +218,9 @@ setInterval(()=> {
    goal.setMinutes('59');
    goal.setSeconds('59');
    goal = moment(goal);
+
+   //console.log(`now : ${NOW}`);
+   //console.log(`goal : ${goal}`);
 
    const DIFF = goal.diff(NOW);
    const DURATION = moment.duration(DIFF);
