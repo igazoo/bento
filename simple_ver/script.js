@@ -138,52 +138,104 @@ $(document).ready(()=>{
 
 
 //フォーム入力値の取得
-
-const OPTION_EXPLANATION = document.getElementById('optionExplanation');
-
-//ラジオボタンの入力値を取得して表示
-const RADIO_FORM = document.getElementById('radioForm');
-
-RADIO_FORM.onsubmit = event =>{
-  event.preventDefault();
-
-  let radio;
-  radio = RADIO_FORM.option.value;
-  OPTION_EXPLANATION.textContent = `ご飯の量 : ${radio}`;
-};
+const OPTION_ANSWER = document.getElementById('optionAnswer');
 
 
-//チェックボックスの入力値を取得して表示
-const CHECKBOX_FORM = document.getElementById('checkboxForm');
+//ラジオボタン - name属性あり
+function riceButtonClick() {
+    OPTION_ANSWER.textContent = `ご飯の量 : ${document.riceForm.rice.value}`;
+}
 
-CHECKBOX_FORM.onsubmit = event =>{
-  event.preventDefault();
-
-  const ELEMENTS = document.getElementsByName('accessory');
-
-  let checkbox = "付属品 :";
-  let i=0;
-  while(i < 3){
-    if(ELEMENTS[i].checked) checkbox = checkbox + ' ' + ELEMENTS[i].value;
-    i += 1;
-  };
-  OPTION_EXPLANATION.textContent = checkbox;
-};
-
-
-//セレクトドロップダウンの入力値を取得して表示
-const SELECT_FORM = document.getElementById('selectForm');
-
-SELECT_FORM.onsubmit = event =>{
-  event.preventDefault();
-
-  const OPTION = SELECT_FORM.select.value;
-  OPTION_EXPLANATION.textContent = `当店を知ったきっかけ : ${OPTION}`;
-};
+//ラジオボタン - name属性なし / getElementsByName() 使用
+/*
+function riceButtonClick() {
+    const RICE_INPUT = document.getElementsByName('rice');
+    let rice_output = '';
+    for (let i = 0; i < RICE_INPUT.length; i++) {
+        if (RICE_INPUT.item(i).checked) {
+            rice_output = rice_output +' '+ RICE_INPUT[i].value;
+        }
+    }
+    OPTION_ANSWER.textContent = `ご飯の量 : ${rice_output}`;
+}
+*/
 
 
-//テキストボックスの入力値を取得して表示
+//チェックボックス - name属性あり
+function accessoryButtonClick() {
+    const ACCESSORY_INPUT = document.accessoryForm.accessory;
+    let accessory_output = '';
+
+	for(var i = 0; i < ACCESSORY_INPUT.length; i++ ){
+		if(ACCESSORY_INPUT[i].checked ){
+			accessory_output = accessory_output +' '+ ACCESSORY_INPUT[i].value;
+		}
+	}
+
+    OPTION_ANSWER.textContent = `付属品 : ${accessory_output}`;
+}
+
+//チェックボックス - name属性なし / getElementsByName() 使用
+/*
+function accessoryButtonClick() {
+    const ACCESSORY_INPUT = document.getElementsByName('accessory');
+    let accessory_output = '';
+    for (let i = 0; i < ACCESSORY_INPUT.length; i++) {
+        if (ACCESSORY_INPUT.item(i).checked) {
+            accessory_output = accessory_output +' '+ ACCESSORY_INPUT[i].value;
+        }
+    }
+    OPTION_ANSWER.textContent = `付属品 : ${accessory_output}`;
+}
+*/
+
+
+//セレクトボックス - name属性あり
+/*
+function mediaButtonClick() {
+    const num = document.mediaForm.media.selectedIndex;
+    OPTION_ANSWER.textContent = `当店を知ったきっかけ : ${document.mediaForm.media.options[num].value}`;
+}
+*/
+
+//セレクトボックス - name属性なし / getElementById() 使用
+function mediaButtonClick() {
+    const MEDIA = document.getElementById('media').value;
+    OPTION_ANSWER.textContent = `お届け先住所 : ${MEDIA}`;
+}
+
+
+//テキストボックス - name属性あり
+function addressButtonClick() {
+    OPTION_ANSWER.textContent = `お届け先住所 : ${document.addressForm.address.value}`;
+}
+
+//テキストボックス - name属性なし / getElementById() 使用
+/*
+function addressButtonClick() {
+    const ADDRESS = document.getElementById('address').value;
+    OPTION_ANSWER.textContent = `お届け先住所 : ${ADDRESS}`;
+}
+*/
+
+
+//テキストエリア - name属性あり
+function requestButtonClick() {
+    OPTION_ANSWER.textContent = `その他ご要望 : ${document.requestForm.request.value}`;
+}
+
+//テキストエリア - name属性なし / getElementById() 使用
+/*
+function requestButtonClick() {
+    const REQUEST = document.getElementById('request').value;
+    OPTION_ANSWER.textContent = `その他ご要望 : ${REQUEST}`;
+}
+*/
+
+
+
 //Google Maps API を利用し入力した値に該当する地図を表示
+/*
 const TEXT_FORM = document.getElementById('textForm');
 const MAP_KEY = "AIzaSyC8F2vD0OFURJR3LovVPmhNjTUkNOswwZE&q";
 const MAP_STYLE = 'width="300" height="225" frameborder="0" style="border:0;" allowfullscreen=""';
@@ -206,6 +258,7 @@ TEXTAREA_FORM.onsubmit = event =>{
   const TEXTAREA = document.getElementById('textareaForm').textarea.value;
   OPTION_EXPLANATION.textContent = `その他ご要望 : ${TEXTAREA}`;
 };
+*/
 
 
 

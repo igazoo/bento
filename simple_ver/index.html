@@ -86,76 +86,135 @@
       <hr class="w-50 my-3">
 
 
-      <!-- オプション -->
-      <div>
-
-        <h3>オプション</h3>
-
+        <!--オプション-->
+        <!--ラジオボタン / name属性あり-->
         <div class="mt-4">
           <h5>ご飯の量</h5>
-          <form id="radioForm">
-            <input name="option" value="大" type="radio" class="mx-1"/>大
-            <input name="option" value="中" type="radio" class="mx-1"/>中
-            <input name="option" value="小" type="radio" class="mx-1"/>小
-            <button type="submit" class="btn btn-sm btn-outline-info">Submit</button>
+          <form name="riceForm">
+            <input name="rice" value="大" type="radio" class="mx-1"/>大
+            <input name="rice" value="中" type="radio" class="mx-1"/>中
+            <input name="rice" value="小" type="radio" class="mx-1"/>小
           </form>
-        </div>
+          <input type="button" class="btn btn-sm btn-outline-info mt-2" value="送信" onclick="riceButtonClick();" />
+      </div>
+      <!--END ; ラジオボタン / name属性あり-->
 
-        <div class="mt-4">
+      <!--ラジオボタン / name属性なし
+      <div class="mt-4">
+          <h5>ご飯の量</h5>
+          <form>
+            <input name="rice" value="大" type="radio" class="mx-1"/>大
+            <input name="rice" value="中" type="radio" class="mx-1"/>中
+            <input name="rice" value="小" type="radio" class="mx-1"/>小
+          </form>
+          <input type="button" class="btn btn-sm btn-outline-info mt-2" value="送信" onclick="riceButtonClick();" />
+      </div>
+      END : ラジオボタン / name属性なし-->
+
+
+      <!--チェックボックス / name属性あり-->
+      <div class="mt-4">
           <h5>付属品</h5>
-          <form id="checkboxForm">
+          <form name="accessoryForm">
             <input name="accessory" value="箸" type="checkbox" class="mx-1"/>箸
             <input name="accessory" value="手拭き" type="checkbox" class="mx-1"/>手拭き
             <input name="accessory" value="爪楊枝" type="checkbox" class="mx-1"/>爪楊枝
-            <button type="submit" class="btn btn-sm btn-outline-info">Submit</button>
           </form>
-        </div>
-
-        <div class="mt-4">
-          <h5>当店を知ったきっかけ</h5>
-          <form id="selectForm">
-            <select name="select">
-              <option value="知人の紹介">知人の紹介</option>
-              <option value="インターネット">インターネット</option>
-              <option value="その他">その他</option>
-            </select>
-            <button type="submit" class="btn btn-sm btn-outline-info">Submit</button>
-          </form>
-        </div>
-
-        <div class="mt-4">
-          <h5>お届け先住所</h5>
-          <form id="textForm">
-            <input name="text" class="border">
-            <button type="submit" class="btn btn-sm btn-outline-info">Submit</button>
-          </form>
-        </div>
-
-        <div class="mt-4">
-          <h5>その他ご要望</h5>
-          <form id="textareaForm">
-            <textarea name="textarea" rows="3" class="border"></textarea>
-            <button type="submit" class="btn btn-sm btn-outline-info">Submit</button>
-          </form>
-        </div>
-
-        <div class="mt-4">
-          <div id ="optionExplanation" class="border mx-auto mb-5" style="height:300px; width:300px">
-          </div>
-        </div>
-
-
-        <hr class="w-50 my-3">
-
-
-        <!-- カウントダウン -->
-        <div class="mb-5">
-          <p id="countdown"></p>
-        </div>
-        <!-- END : カウントダウン -->
-
+          <input type="button" class="btn btn-sm btn-outline-info mt-2" value="送信" onclick="accessoryButtonClick();" />
       </div>
-      <!-- END : オプション -->
+      <!--END : チェックボックス / name属性あり-->
+
+
+      <!--チェックボックス / name属性なし
+      <div class="mt-4">
+          <h5>付属品</h5>
+          <form>
+            <input name="accessory" value="箸" type="checkbox" class="mx-1"/>箸
+            <input name="accessory" value="手拭き" type="checkbox" class="mx-1"/>手拭き
+            <input name="accessory" value="爪楊枝" type="checkbox" class="mx-1"/>爪楊枝
+          </form>
+          <input type="button" class="btn btn-sm btn-outline-info mt-2" value="送信" onclick="accessoryButtonClick();" />
+      </div>
+      END : ラジオボタン / name属性なし-->
+
+
+      <!--セレクトボックス / name属性あり-->
+      <div class="mt-4">
+          <h5>当店を知ったきっかけ</h5>
+          <form name="mediaForm">
+            <select name="media">
+              <option value="テレビ">テレビ</option>
+              <option value="インターネット">インターネット</option>
+              <option value="雑誌">雑誌</option>
+            </select>
+            <input type="button" class="btn btn-sm btn-outline-info mt-2" value="送信" onclick="mediaButtonClick();" />
+          </form>
+      </div>
+      <!--END : セレクトボックス / name属性あり-->
+
+      <!--セレクトボックス / name属性なし
+      <div class="mt-4">
+          <h5>当店を知ったきっかけ</h5>
+          <form>
+            <select id="media">
+              <option value="テレビ">テレビ</option>
+              <option value="インターネット">インターネット</option>
+              <option value="雑誌">雑誌</option>
+            </select>
+            <input type="button" class="btn btn-sm btn-outline-info mt-2" value="送信" onclick="mediaButtonClick();" />
+          </form>
+      </div>
+      END : セレクトボックス / name属性なし-->
+
+
+      <!--テキストボックス / name属性あり-->
+      <div class="mt-4">
+          <h5>お届け先住所</h5>
+          <form name="addressForm">
+            <input name="address" type="text" class="border">
+          </form>
+          <input type="button" class="btn btn-sm btn-outline-info mt-2" value="送信" onclick="addressButtonClick();" />
+      </div>
+      <!--END : テキストボックス / name属性あり-->
+
+      <!--テキストボックス / name属性なし
+      <div class="mt-4">
+          <h5>お届け先住所</h5>
+          <form>
+            <input id="address" type="text" class="border">
+          </form>
+          <input type="button" class="btn btn-sm btn-outline-info mt-2" value="送信" onclick="addressButtonClick();" />
+      </div>
+      END : テキストボックス / name属性なし-->        
+
+
+      <!--テキストエリア / name属性あり-->
+      <div class="mt-4">
+          <h5>その他ご要望</h5>
+          <form name="requestForm">
+            <textarea name="request" rows="3" class="border"></textarea>
+          </form>
+          <input type="button" class="btn btn-sm btn-outline-info mt-2" value="送信" onclick="requestButtonClick();" />
+      </div>
+      <!--END : テキストエリア / name属性あり-->
+
+      <!--テキストエリア / name属性なし
+      <div class="mt-4">
+          <h5>その他ご要望</h5>
+          <form>
+            <textarea name="request" rows="3" class="border"></textarea>
+          </form>
+          <input type="button" class="btn btn-sm btn-outline-info mt-2" value="送信" onclick="requestButtonClick();" />
+      </div>   
+      END : テキストエリア / name属性なし-->     
+          
+      <!--出力ボックス--> 
+      <div class="mt-4">
+          <div id ="optionAnswer" class="border mx-auto mb-5" style="height:300px; width:300px">
+          </div>
+      </div>
+      <!--END : 出力ボックス-->
+      <!--END : オプション-->
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.23.0/moment.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.23.0/locale/ja.js"></script>
