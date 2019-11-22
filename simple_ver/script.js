@@ -138,6 +138,7 @@ $(document).ready(()=>{
 
 
 //フォーム入力値の取得
+//出力
 const OPTION_ANSWER = document.getElementById('optionAnswer');
 
 
