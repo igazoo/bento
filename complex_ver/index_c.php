@@ -1,3 +1,6 @@
+<!--関連書籍の取得(API), 現在地からお弁当屋さんまでの経路(API) あり-->
+
+
 <?php
 $url = 'https://www.googleapis.com/books/v1/volumes?q=お弁当&maxResults=9';
 $json = file_get_contents($url);
