@@ -1,0 +1,188 @@
+<!--
+なんちゃってお弁当サイトの 1 ファイル内のコードを分割しています。
+
+HTML, CSS へのアウトプット編
+https://github.com/mayasan-sc/bento/tree/master/HTML_CSS_output
+-->
+
+
+<!doctype html>
+<html>
+
+
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+
+    <title>お弁当屋さん</title>
+
+    <!--Bootstrap-->
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
+    <!--END : Bootstrap-->
+    </script>
+  </head>
+
+
+
+  <body class="text-black-50 text-center">
+    <div>
+
+
+      <!-- タイトル-->
+      <div class="mt-5">
+        <h1>お弁当屋さん</h1>
+      </div>
+      <!-- END : タイトル-->
+
+
+      <hr class="w-50 my-3">
+
+      <!--オプション-->
+      <!--ラジオボタン / name属性あり-->
+      <div class="mt-4">
+          <h5>ご飯の量</h5>
+          <form name="riceForm">
+              <input name="rice" value="大" type="radio" class="mx-1"/>大
+              <input name="rice" value="中" type="radio" class="mx-1"/>中
+              <input name="rice" value="小" type="radio" class="mx-1"/>小
+              <input type="button" class="btn btn-sm btn-outline-info ml-2" value="送信" onclick="riceButtonClick()"/>
+          </form>
+      </div>
+      <!--END : ラジオボタン / name属性あり-->
+
+      <!--ラジオボタン / name属性なし-->
+      <!--
+      <div class="mt-4">
+        <h5>ご飯の量</h5>
+        <form>
+            <input name="rice" value="大" type="radio" class="mx-1"/>大
+            <input name="rice" value="中" type="radio" class="mx-1"/>中
+            <input name="rice" value="小" type="radio" class="mx-1"/>小
+            <input type="button" class="btn btn-sm btn-outline-info ml-2" value="送信" onclick="riceButtonClick()"/>
+        </form>
+    </div>
+    -->
+    <!--END : ラジオボタン / name属性なし-->
+
+
+    <!--チェックボックス / name属性あり-->
+    <div class="mt-4">
+        <h5>付属品</h5>
+        <form name="accessoryForm">
+            <input name="accessory" value="箸" type="checkbox" class="mx-1"/>箸
+            <input name="accessory" value="手拭き" type="checkbox" class="mx-1"/>手拭き
+            <input name="accessory" value="爪楊枝" type="checkbox" class="mx-1"/>爪楊枝
+            <input type="button" class="btn btn-sm btn-outline-info ml-2" value="送信" onclick="accessoryButtonClick()"/>
+        </form>
+    </div>
+    <!--END : チェックボックス / name属性あり-->
+
+    <!--チェックボックス / name属性なし-->
+    <!--
+    <div class="mt-4">
+        <h5>付属品</h5>
+        <form>
+            <input name="accessory" value="箸" type="checkbox" class="mx-1"/>箸
+            <input name="accessory" value="手拭き" type="checkbox" class="mx-1"/>手拭き
+            <input name="accessory" value="爪楊枝" type="checkbox" class="mx-1"/>爪楊枝
+            <input type="button" class="btn btn-sm btn-outline-info ml-2" value="送信" onclick="accessoryButtonClick()"/>
+        </form>
+    </div>
+    -->
+    <!--END : チェックボックス / name属性なし-->
+
+
+    <!--セレクトボックス / name属性あり-->
+    <div class="mt-4">
+        <h5>当店を知ったきっかけ</h5>
+        <form name="mediaForm">
+            <select name="media">
+                <option value="テレビ">テレビ</option>
+                <option value="インターネット">インターネット</option>
+                <option value="雑誌">雑誌</option>
+            </select>
+            <input type="button" class="btn btn-sm btn-outline-info ml-2" value="送信" onclick="mediaButtonClick()"/>
+        </form>
+    </div>
+    <!--END : セレクトボックス / name属性あり-->
+
+    <!--セレクトボックス / name属性なし-->
+    <!--
+    <div class="mt-4">
+        <h5>当店を知ったきっかけ</h5>
+        <form>
+            <select id="media">
+                <option value="テレビ">テレビ</option>
+                <option value="インターネット">インターネット</option>
+                <option value="雑誌">雑誌</option>
+            </select>
+            <input type="button" class="btn btn-sm btn-outline-info ml-2" value="送信" onclick="mediaButtonClick()"/>
+        </form>
+    </div>
+    -->
+    <!--END : セレクトボックス / name属性なし-->
+
+    <!--テキストボックス / name属性あり-->
+    <div class="mt-4">
+        <h5>お届け先住所</h5>
+        <form name="addressForm">
+            <input name="address" type="text" class="border">    
+            <input type="button" class="btn btn-sm btn-outline-info ml-2" value="送信" onclick="addressButtonClick()" />        
+        </form>
+    </div>
+    <!--END : テキストボックス / name属性あり-->
+
+    <!--テキストボックス / name属性なし-->
+    <!--
+    <div class="mt-4">
+        <h5>お届け先住所</h5>
+        <form>
+            <input id="address" type="text" class="border">    
+            <input type="button" class="btn btn-sm btn-outline-info ml-2" value="送信" onclick="addressButtonClick()" />        
+        </form>
+    </div>
+    -->
+    <!--END : テキストボックス / name属性なし-->
+
+
+    <!--テキストエリア / name属性あり-->
+    <div class="mt-4">
+        <h5>その他ご要望</h5>
+        <form name="requestForm">
+            <textarea name="request" rows="3" class="border"></textarea>
+            <input type="button" class="btn btn-sm btn-outline-info ml-2" value="送信" onclick="requestButtonClick()"/>
+        </form>
+    </div>
+    <!--END : テキストエリア / name属性あり-->
+
+    <!--テキストエリア / name属性なし-->
+    <!--
+    <div class="mt-4">
+        <h5>その他ご要望</h5>
+        <form>
+            <textarea id="request" rows="3" class="border"></textarea>
+            <input type="button" class="btn btn-sm btn-outline-info ml-2" value="送信" onclick="requestButtonClick()"/>
+        </form>
+    </div>
+    -->
+    <!--END : テキストエリア / name属性なし-->
+
+
+    <!--出力-->
+    <div class="mt-4">
+        <div id="optionAnswer" class="border mx-auto mb-5" style="height:300px; width:300px;">
+        </div>
+    </div>
+    <!--END : 出力-->
+
+
+    <script src="script.js"></script>
+    </body>
+
+
+
+</html>
